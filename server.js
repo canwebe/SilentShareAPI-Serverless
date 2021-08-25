@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-conts cors =require('cors')
+const cors = require('cors')
 
 const filesRoute = require('./routes/files')
 const viewRoute = require('./routes/view')
@@ -11,8 +11,8 @@ connectDB()
 
 //middleware
 
-const corsOptions={
- origin:process.env.ALLOWED_CORS
+const corsOptions = {
+  origin: process.env.ALLOWED_CORS,
 }
 app.use(cors(corsOptions))
 
