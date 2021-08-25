@@ -1,9 +1,15 @@
 const express = require('express')
-const { connect } = require('mongoose')
 const app = express()
-const PORT = process.env.PORT || 3000
 
+const filesRoute = require('./routes/files')
+
+// db
 const connectDB = require('./config/db')
 connectDB()
 
+//Routes
+
+app.use('/api/files', filesRoute)
+
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Server is running on ${PORT}`))
