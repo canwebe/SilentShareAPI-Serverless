@@ -5,7 +5,7 @@ const File = require('../models/file')
 const { v4: uuid4 } = require('uuid')
 
 let storage = multer.diskStorage({
-  destination: (req, file, fxn) => fxn(nul, 'storage/'),
+  destination: (req, file, fxn) => fxn(null, 'storage/'),
   filename: (req, file, fxn) => {
     const fileId = `${Date.now()}-${Math.round(
       Math.random() * 1e9
