@@ -2,7 +2,6 @@ const router = require('express').Router()
 const multer = require('multer')
 const path = require('path')
 const File = require('../models/file')
-const { v4: uuid4 } = require('uuid')
 
 let storage = multer.diskStorage({
   destination: (req, file, fxn) => fxn(null, 'storage/'),
@@ -31,10 +30,12 @@ router.post('/', (req, res) => {
     if (!req.file) {
       return res.json({ error: 'File is not found' })
     }
-    //database store
+
+    // database store
     const file = new File({
       filename: req.file.filename,
-      uuid: uuid4(),
+      originalname: req.file.originalname,
+      uuid: req.body.uuid,
       path: req.file.path,
       size: req.file.size,
     })
