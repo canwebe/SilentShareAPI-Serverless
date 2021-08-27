@@ -13,10 +13,10 @@ connectDB()
 
 //middleware
 
-const corsOptions = {
-  origin: process.env.ALLOWED_CORS,
-}
-app.use(cors(corsOptions))
+// const corsOptions = {
+//   origin: process.env.ALLOWED_CORS,
+// }
+app.use(cors())
 
 //Routes
 
