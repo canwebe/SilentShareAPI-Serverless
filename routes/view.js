@@ -3,21 +3,15 @@ const File = require('../models/file')
 
 router.get('/:uuid', async (req, res) => {
   try {
-    const file = await File.findOne({
+    const files = await File.find({
       uuid: req.params.uuid,
     })
-    if (!file) {
+    if (!files) {
       return res.json({
         error: 'Link expires try again',
       })
     }
-
-    return res.json({
-      uuid: file.uuid,
-      fileName: file.fileName,
-      fileSize: file.size,
-      link: `${process.env.APP_URL}/files/download/${file.uuid}`,
-    })
+    return res.json(files)
   } catch (error) {
     return res.json({
       error: 'Something went wrong please try again',
