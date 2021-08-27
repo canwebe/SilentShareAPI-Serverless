@@ -16,7 +16,15 @@ connectDB()
 // const corsOptions = {
 //   origin: process.env.ALLOWED_CORS,
 // }
-app.use(cors())
+// app.use(cors())
+
+app.use((req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://silentshare.netlify.app')
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+})
 
 //Routes
 
