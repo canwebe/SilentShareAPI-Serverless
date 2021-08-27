@@ -1,6 +1,12 @@
 const router = require('express').Router()
 const File = require('../models/file')
 
+router.get('/', (req, res) => {
+  return res.json({
+    message: 'Hello from server',
+  })
+})
+
 router.get('/:uuid', async (req, res) => {
   try {
     const files = await File.find({
