@@ -4,3 +4,5 @@ storage/*
 !storage/.gitkeep
 
 .env
+# Local Netlify folder
+.netlify
