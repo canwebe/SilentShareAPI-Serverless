@@ -40,18 +40,21 @@ router.get('/remove/:uuid', async (req, res) => {
     const files = await File.find({
       uuid: req.params.uuid,
     })
-    // mongoose.connection.close()
+
     if (files.length) {
-      files.forEach((file) => {
-        //  try {
-        // await file.remove()
-        console.log(`successfully deleted ${file.filename}`)
-        res.status(200).json({
-          file,
-        })
+      files.forEach(async (file) => {
+        try {
+          await file.remove()
+          console.log(`successfully deleted ${file.filename}`)
+        } catch {
+          return res.json({
+            message: 'Error occured on removing files try again',
+          })
+        }
       })
+
       return res.json({
-        message: 'hshhdshdh',
+        message: 'All files are removed Successfully',
       })
     }
   } catch (err) {
