@@ -42,7 +42,7 @@ router.get('/remove/:uuid', async (req, res) => {
     })
 
     if (files.length) {
-      files.forEach(async (file) => {
+      files.map(async (file) => {
         try {
           await file.remove()
           console.log(`successfully deleted ${file.filename}`)
